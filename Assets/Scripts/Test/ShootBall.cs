@@ -46,7 +46,7 @@ public class ShootBall : MonoBehaviour
         float p0 = rb.velocity.magnitude;
         float p = rb.mass * speed;
         float deltaP = p - p0;
-        force = deltaP/ Time.deltaTime;
+        force = deltaP / Time.deltaTime;
         shootBall = true;
     }
 }
