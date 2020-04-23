@@ -4,14 +4,61 @@ using UnityEngine;
 
 public class Racket : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    InputController inputController;
+    Transform target;
+    Vector3 moveTargetDirection;
+    Vector3 targetDefaultPosition;
+    public float swingTime;
+    public float aimSpeed;
+    float timer;
+    bool swing;
+
+    private void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("TargetPlayer").transform;
+        targetDefaultPosition = target.position;
+    }
+    void Awake()
+    {
+        inputController = new InputController();
+        inputController.Player.Swing.performed += ctx => Swing();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
+    {
+        target.Translate(moveTargetDirection * aimSpeed * Time.deltaTime);
+    }
+
+    private void Update()
+    {
+        if(timer < 0.0f)
+        {
+            swing = false;
+        }
+        moveTargetDirection.z = Input.GetAxis("Mouse X");
+        moveTargetDirection.x = Input.GetAxis("Mouse Y") * -1;
+        if (moveTargetDirection.z > 1) moveTargetDirection.z = 1;
+        if (moveTargetDirection.x > 1) moveTargetDirection.x = 1;
+    }
+
+    private void OnEnable()
+    {
+        inputController.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputController.Disable();
+    }
+
+    private void Swing()
+    {
+        swing = true;
+        timer = swingTime;
+        target.position = targetDefaultPosition;
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         
     }
