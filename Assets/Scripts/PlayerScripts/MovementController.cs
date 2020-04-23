@@ -48,7 +48,7 @@ public class MovementController : MonoBehaviour
 
         if (desiredMoveDirection != Vector3.zero)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), rotationSpeed);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), rotationSpeed);
         }
 
         float targetSpeed = movementSpeed * movementInput.magnitude;
