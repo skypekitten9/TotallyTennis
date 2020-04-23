@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShootBall : MonoBehaviour
 {
     public Vector3 direction;
+    public Vector3 direction2;
+    Vector3 currentDirection;
     public float speed;
     bool shootBall;
     float force;
@@ -18,7 +20,7 @@ public class ShootBall : MonoBehaviour
     {
         if(shootBall)
         {
-            rb.AddForce(direction * force);
+            PhysicsHelper.ApplyForceToReachVelocity(rb, currentDirection * speed, force);
             shootBall = false;
         }
 
@@ -29,6 +31,7 @@ public class ShootBall : MonoBehaviour
     {
         inputController = new InputController();
         inputController.Player.Jump.performed += ctx => Shoot();
+        inputController.Player.Swing.performed += ctx => Shoot2();
     }
 
     private void OnEnable()
@@ -47,6 +50,19 @@ public class ShootBall : MonoBehaviour
         float p = rb.mass * speed;
         float deltaP = p - p0;
         force = deltaP / Time.deltaTime;
+        force = Mathf.Abs(force);
         shootBall = true;
+        currentDirection = direction;
+    }
+
+    private void Shoot2()
+    {
+        float p0 = rb.velocity.magnitude;
+        float p = rb.mass * speed;
+        float deltaP = p - p0;
+        force = deltaP / Time.deltaTime;
+        force = Mathf.Abs(force);
+        shootBall = true;
+        currentDirection = direction2;
     }
 }
