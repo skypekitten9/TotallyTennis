@@ -9,11 +9,36 @@ public class MovementController : MonoBehaviour
     private float speedSmoothVelocity = 0f;
     private float speedSmoothTime = 0.1f;
     private float rotationSpeed = 0.1f;
-    private float gravity = 9f;
+    private float jumpSpeed = 25;
+    private float gravity = 9.82f;
+
+    private int nrOfJumps = 1;
+    private int maxNrOfJumps = 1;
+
+    private bool isJumping = false;
 
     private Transform referenceTransform = null;
 
     private CharacterController controller = null;
+
+    private InputController inputController;
+
+    private Vector3 gravityVector;
+
+    private void Awake()
+    {
+        inputController = new InputController();
+        inputController.Player.Jump.performed += ctx => Jump();
+    }
+    private void OnEnable()
+    {
+        inputController.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputController.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +53,15 @@ public class MovementController : MonoBehaviour
         Move();
     }
 
+    private void Jump()
+    {
+        if (controller.isGrounded)
+        {
+            gravityVector.y = jumpSpeed;
+            controller.Move(gravityVector * Time.deltaTime);
+        }
+    }
+
     private void Move()
     {
         Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), (Input.GetAxisRaw("Vertical")));
@@ -39,11 +73,15 @@ public class MovementController : MonoBehaviour
         right.Normalize();
 
         Vector3 desiredMoveDirection = (forward * movementInput.y + right * movementInput.x).normalized;
-        Vector3 gravityVector = Vector3.zero;
 
         if (!controller.isGrounded)
         {
-            gravityVector.y -= gravity;
+            gravityVector.y -= gravity / 10;
+        }
+        else
+        {
+            gravityVector.y = 0;
+            nrOfJumps = maxNrOfJumps;
         }
 
         if (desiredMoveDirection != Vector3.zero)
