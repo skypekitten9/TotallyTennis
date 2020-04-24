@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4c8d082de414e41a0c532c6a0df360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 10
   swingTime: 0.5
   aimSpeed: 200
 --- !u!1 &7062572757371821387

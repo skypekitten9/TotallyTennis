@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TennisBall : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-
     }
 }

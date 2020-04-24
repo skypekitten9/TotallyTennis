@@ -8,6 +8,7 @@ public class Racket : MonoBehaviour
     Transform target;
     Vector3 moveTargetDirection;
     Vector3 targetDefaultPosition;
+    public float force;
     public float swingTime;
     public float aimSpeed;
     float timer;
@@ -58,11 +59,14 @@ public class Racket : MonoBehaviour
     {
         swing = true;
         timer = swingTime;
-        target.position = targetDefaultPosition;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Ball") && timer > 0f) 
+        {
+            Vector3 direction = target.position - transform.position;
+            other.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * force;
+        }
     }
 }
