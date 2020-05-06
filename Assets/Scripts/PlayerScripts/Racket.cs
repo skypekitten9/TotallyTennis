@@ -37,8 +37,9 @@ public class Racket : MonoBehaviour
         {
             swing = false;
         }
+
         moveTargetDirection.x = Input.GetAxis("Mouse X");
-        moveTargetDirection.z = Input.GetAxis("Mouse Y") * 1;
+        moveTargetDirection.z = Input.GetAxis("Mouse Y");
         if (moveTargetDirection.x > 1) moveTargetDirection.x = 1;
         if (moveTargetDirection.z > 1) moveTargetDirection.z = 1;
         if (moveTargetDirection.x < -1) moveTargetDirection.x = -1;
@@ -63,10 +64,10 @@ public class Racket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball") && swing) 
+        if (other.gameObject.CompareTag("Ball")) 
         {
             Vector3 direction = target.position - transform.position;
-            other.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * force;
+            other.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * force + new Vector3(0, 6, 0);
         }
     }
 }
