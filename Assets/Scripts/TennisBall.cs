@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class TennisBall : MonoBehaviour
 {
+    public int numberOfBounces;
+
+    private void Start()
+    {
+        numberOfBounces = 0;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        numberOfBounces++;
     }
 }

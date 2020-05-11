@@ -68,6 +68,7 @@ public class Racket : MonoBehaviour
         {
             Vector3 direction = target.position - transform.position;
             other.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * force + new Vector3(0, 6, 0);
+            other.gameObject.GetComponent<TennisBall>().numberOfBounces = 0;
         }
     }
 }
