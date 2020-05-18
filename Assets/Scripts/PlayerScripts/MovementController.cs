@@ -8,7 +8,6 @@ public class MovementController : MonoBehaviour
     private float currentSpeed = 0f;
     private float speedSmoothVelocity = 0f;
     private float speedSmoothTime = 0.1f;
-    private float rotationSpeed = 0.1f;
     private float jumpSpeed = 25;
     private float gravity = 9.82f;
 

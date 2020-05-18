@@ -7,6 +7,7 @@ public class TennisManager : MonoBehaviour
     GameObject tennisBall;
     GameObject fieldReference;
     GameObject gameManager;
+    public GameObject nextMiniGame;
 
     Transform tennisBallTransform;
     Transform fieldReferenceTransform;
@@ -41,7 +42,18 @@ public class TennisManager : MonoBehaviour
             else if (tennisBallTransform.position.z < fieldReferenceTransform.position.z)
             {
                 gameManager.GetComponent<GameManager>().LoseLife();
+                Destroy(gameObject);
             }
         }
+
+        if(minigameDuration <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(nextMiniGame);
     }
 }
