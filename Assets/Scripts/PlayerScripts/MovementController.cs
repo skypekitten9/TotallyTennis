@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class MovementController : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class MovementController : MonoBehaviour
     private float currentSpeed = 0f;
     private float speedSmoothVelocity = 0f;
     private float speedSmoothTime = 0.1f;
-    private float jumpSpeed = 25;
+    private float jumpSpeed = 150;
     private float gravity = 9.82f;
 
     private int nrOfJumps = 1;
@@ -24,21 +26,6 @@ public class MovementController : MonoBehaviour
 
     private Vector3 gravityVector;
 
-    private void Awake()
-    {
-        inputController = new InputController();
-        inputController.Player.Jump.performed += ctx => Jump();
-    }
-    private void OnEnable()
-    {
-        inputController.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputController.Disable();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,15 +37,17 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
+        {
+            Jump();
+        }
     }
 
     private void Jump()
     {
-        if (controller.isGrounded)
-        {
-            gravityVector.y = jumpSpeed;
-            controller.Move(gravityVector * Time.deltaTime);
-        }
+        gravityVector.y += jumpSpeed * Time.deltaTime;
+        controller.Move(gravityVector * Time.deltaTime);
     }
 
     private void Move()
@@ -75,11 +64,12 @@ public class MovementController : MonoBehaviour
 
         if (!controller.isGrounded)
         {
-            gravityVector.y -= gravity / 10;
+            gravityVector.y -= gravity * Time.deltaTime;
         }
-        else
+
+        if (controller.isGrounded)
         {
-            gravityVector.y = 0;
+            gravityVector.y = gravity * Time.deltaTime;
             nrOfJumps = maxNrOfJumps;
         }
 
