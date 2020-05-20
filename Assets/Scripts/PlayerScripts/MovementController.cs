@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
     private float currentSpeed = 0f;
     private float speedSmoothVelocity = 0f;
     private float speedSmoothTime = 0.1f;
-    private float jumpSpeed = 150;
+    private float jumpSpeed = 5;
     private float gravity = 9.82f;
 
     private int nrOfJumps = 1;
@@ -38,15 +38,21 @@ public class MovementController : MonoBehaviour
     {
         Move();
 
-        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && nrOfJumps > 0)
         {
             Jump();
+        }
+
+        if (controller.isGrounded)
+        {
+            nrOfJumps = 1;
         }
     }
 
     private void Jump()
     {
-        gravityVector.y += jumpSpeed * Time.deltaTime;
+        nrOfJumps--;
+        gravityVector.y += jumpSpeed;
         controller.Move(gravityVector * Time.deltaTime);
     }
 
