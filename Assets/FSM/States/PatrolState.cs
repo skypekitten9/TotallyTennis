@@ -38,8 +38,8 @@ namespace Assets.FSM.States
             {
                 UnityEngine.Debug.Log("ENTERING PATROL STATE");
 
-                rightPos = new Vector3(objectStartPos.x + 4.0f, objectStartPos.y, objectStartPos.z);
-                leftPos = new Vector3(objectStartPos.x - 4.0f, objectStartPos.y, objectStartPos.z);
+                rightPos = new Vector3(objectStartPos.x + 4.0f, objectStartPos.y, objectStartPos.z + 15.85f);
+                leftPos = new Vector3(objectStartPos.x - 4.0f, objectStartPos.y, objectStartPos.z + 15.85f);
             }
 
             EnteredState = true;

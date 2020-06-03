@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 355826648752922305}
   - component: {fileID: 7634394342863546714}
   m_Layer: 0
-  m_Name: TennisManager 1
+  m_Name: TennisManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Court
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 641001640456296792, guid: 2eb37a9de5f365b458ceea7f1748e984, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2eb37a9de5f365b458ceea7f1748e984, type: 3}
 --- !u!4 &5347919376524191362 stripped
 Transform:
