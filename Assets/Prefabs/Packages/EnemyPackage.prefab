@@ -157,8 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f95b9db40f23c4a89616e068dc7d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingState: {fileID: 11400000, guid: 121eaacb70931b4478e41a97c6190eed, type: 2}
-  _validStates: []
+  _startingState: {fileID: 11400000, guid: e93c4443cf3fea547bbc89bdc0b14c65, type: 2}
+  _validStates:
+  - {fileID: 11400000, guid: e93c4443cf3fea547bbc89bdc0b14c65, type: 2}
+  - {fileID: 11400000, guid: 121eaacb70931b4478e41a97c6190eed, type: 2}
+  - {fileID: 11400000, guid: 84e071b6e54dd4f44a06fd0f6f3c3445, type: 2}
 --- !u!114 &5176629239717701509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865163b7823999049a8eb5fb8fc905e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTransform: {fileID: 0}
 --- !u!1 &5621312578669982636
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +231,7 @@ GameObject:
   - component: {fileID: 2782112779232777054}
   m_Layer: 0
   m_Name: TestWall
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,8 +261,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6742529, y: 15.453771, z: 2.4253635}
-  m_Center: {x: 0.011694657, y: 3.8400898, z: 2.2719355}
+  m_Size: {x: 1.6742525, y: 12.035649, z: 2.4253635}
+  m_Center: {x: 0.011694624, y: 2.131029, z: 2.2719355}
 --- !u!114 &2782112779232777054
 MonoBehaviour:
   m_ObjectHideFlags: 0

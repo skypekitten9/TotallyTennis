@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5497303601109327675, guid: 9b28ee05bdf5fc34088691872b043e51,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7634394342863546714, guid: 9b28ee05bdf5fc34088691872b043e51,
         type: 3}
       propertyPath: nextMiniGame
@@ -687,6 +692,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1280100980}
     m_Modifications:
+    - target: {fileID: 939139010983623990, guid: b28ea90e28894034bae8ce8db055b871,
+        type: 3}
+      propertyPath: startTransform
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5176629239717701506, guid: b28ea90e28894034bae8ce8db055b871,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,7 +735,7 @@ PrefabInstance:
     - target: {fileID: 5176629239717701506, guid: b28ea90e28894034bae8ce8db055b871,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5176629239717701506, guid: b28ea90e28894034bae8ce8db055b871,
         type: 3}

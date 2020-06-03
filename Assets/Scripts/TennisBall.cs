@@ -13,11 +13,14 @@ public class TennisBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        numberOfBounces++;
+        if (collision.gameObject.tag != "Player" || collision.gameObject.tag != "Enemy")
+        {
+            numberOfBounces++;
+        }
     }
 }
