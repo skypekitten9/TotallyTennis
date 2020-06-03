@@ -6,6 +6,7 @@ public class Racket : MonoBehaviour
 {
     InputController inputController;
     Transform target;
+    Animator animator;
     Vector3 moveTargetDirection;
     Vector3 targetDefaultPosition;
     public float force;
@@ -18,6 +19,7 @@ public class Racket : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("TargetPlayer").transform;
         targetDefaultPosition = target.position;
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
     void Awake()
     {
@@ -61,6 +63,20 @@ public class Racket : MonoBehaviour
     {
         swing = true;
         timer = swingTime;
+
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            animator.SetTrigger("leftHit");
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            animator.SetTrigger("rightHit");
+        }
+
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            animator.SetTrigger("frontHit");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

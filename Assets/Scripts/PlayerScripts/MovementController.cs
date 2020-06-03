@@ -24,6 +24,8 @@ public class MovementController : MonoBehaviour
 
     private InputController inputController;
 
+    private Animator animator;
+
     private Vector3 gravityVector;
 
     // Start is called before the first frame update
@@ -31,6 +33,7 @@ public class MovementController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         referenceTransform = GameObject.FindGameObjectWithTag("MovementReference").transform;
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,34 @@ public class MovementController : MonoBehaviour
         {
             nrOfJumps = 1;
         }
+
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            animator.SetBool("rightRunning", true);
+            animator.SetBool("leftRunning", false);
+            animator.SetBool("frontRunning", false);
+        }
+        else
+        {
+            animator.SetBool("leftRunning", true);
+            animator.SetBool("rightRunning", false);
+            animator.SetBool("frontRunning", false);
+        }
+
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            animator.SetBool("frontRunning", true);
+            animator.SetBool("rightRunning", false);
+            animator.SetBool("leftRunning", false);
+        }
+
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        {
+            animator.SetBool("frontRunning", false);
+            animator.SetBool("rightRunning", false);
+            animator.SetBool("leftRunning", false);
+        }
+        
     }
 
     private void Jump()
