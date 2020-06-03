@@ -37,8 +37,23 @@ public class TennisManager : MonoBehaviour
             if (tennisBallTransform.position.z > fieldReferenceTransform.position.z)
             {
                 gameManager.GetComponent<GameManager>().GainScore();
+                Destroy(gameObject);
             }
 
+            else if (tennisBallTransform.position.z < fieldReferenceTransform.position.z)
+            {
+                gameManager.GetComponent<GameManager>().LoseLife();
+                Destroy(gameObject);
+            }
+        }
+
+        if (tennisBall.GetComponent<TennisBall>().transform.position.y < -5)
+        {
+            if (tennisBallTransform.position.z > fieldReferenceTransform.position.z)
+            {
+                gameManager.GetComponent<GameManager>().GainScore();
+                Destroy(gameObject);
+            }
             else if (tennisBallTransform.position.z < fieldReferenceTransform.position.z)
             {
                 gameManager.GetComponent<GameManager>().LoseLife();

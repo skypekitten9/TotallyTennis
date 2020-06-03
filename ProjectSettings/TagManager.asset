@@ -9,6 +9,7 @@ TagManager:
   - TargetAI
   - Ball
   - Enemy
+  - BulletSpawner
   layers:
   - Default
   - TransparentFX

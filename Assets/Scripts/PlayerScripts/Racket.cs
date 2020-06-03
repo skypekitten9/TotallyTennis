@@ -81,7 +81,7 @@ public class Racket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball") && swing) 
+        if (other.gameObject.CompareTag("Ball") && swing || other.gameObject.CompareTag("Bullet") && swing) 
         {
             Vector3 direction = target.position - transform.position;
             other.gameObject.GetComponent<Rigidbody>().velocity = direction.normalized * force + new Vector3(0, 6, 0);

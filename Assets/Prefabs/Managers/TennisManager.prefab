@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe2d25673ac46e4a8c5c6bb5a6efd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextMiniGame: {fileID: 944951890674645455, guid: 2eb37a9de5f365b458ceea7f1748e984,
+  nextMiniGame: {fileID: 5439618229770755962, guid: f23778dc0b2ffcc419152763d6dd4a31,
     type: 3}
   minigameDuration: 0
 --- !u!65 &7306898310231714770
